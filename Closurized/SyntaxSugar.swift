@@ -1,5 +1,5 @@
 //
-//  Setup.swift
+//  SyntaxSugar.swift
 //  Closurized
 //
 //  Created by Li-Heng Hsu on 29/01/2018.
@@ -11,3 +11,4 @@ import Foundation
 public func setup<T>(_ object: T, handler: (T) -> Void) {
     handler(object)
 }
+

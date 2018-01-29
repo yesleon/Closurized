@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7119BF4A201ED02600AB5D65 /* UIGestureRecognizer+Closurized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7119BF49201ED02600AB5D65 /* UIGestureRecognizer+Closurized.swift */; };
 		717B6FB7201EAA76005E7D93 /* Closurized.h in Headers */ = {isa = PBXBuildFile; fileRef = 717B6FB5201EAA76005E7D93 /* Closurized.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		717B6FBE201EAA88005E7D93 /* UIButton+Closurized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B6FBD201EAA88005E7D93 /* UIButton+Closurized.swift */; };
-		71887C83201EAF4000C65F3E /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71887C82201EAF4000C65F3E /* Setup.swift */; };
+		717B6FBE201EAA88005E7D93 /* UIControl+Closurized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B6FBD201EAA88005E7D93 /* UIControl+Closurized.swift */; };
+		71887C83201EAF4000C65F3E /* SyntaxSugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71887C82201EAF4000C65F3E /* SyntaxSugar.swift */; };
 		71887C87201EB5B200C65F3E /* Closurized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71887C86201EB5B200C65F3E /* Closurized.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7119BF49201ED02600AB5D65 /* UIGestureRecognizer+Closurized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Closurized.swift"; sourceTree = "<group>"; };
 		717B6FB2201EAA76005E7D93 /* Closurized.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Closurized.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		717B6FB5201EAA76005E7D93 /* Closurized.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Closurized.h; sourceTree = "<group>"; };
 		717B6FB6201EAA76005E7D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		717B6FBD201EAA88005E7D93 /* UIButton+Closurized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Closurized.swift"; sourceTree = "<group>"; };
-		71887C82201EAF4000C65F3E /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
+		717B6FBD201EAA88005E7D93 /* UIControl+Closurized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Closurized.swift"; sourceTree = "<group>"; };
+		71887C82201EAF4000C65F3E /* SyntaxSugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SyntaxSugar.swift; sourceTree = "<group>"; };
 		71887C86201EB5B200C65F3E /* Closurized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closurized.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -54,9 +56,10 @@
 			children = (
 				717B6FB5201EAA76005E7D93 /* Closurized.h */,
 				717B6FB6201EAA76005E7D93 /* Info.plist */,
-				717B6FBD201EAA88005E7D93 /* UIButton+Closurized.swift */,
+				717B6FBD201EAA88005E7D93 /* UIControl+Closurized.swift */,
+				7119BF49201ED02600AB5D65 /* UIGestureRecognizer+Closurized.swift */,
 				71887C86201EB5B200C65F3E /* Closurized.swift */,
-				71887C82201EAF4000C65F3E /* Setup.swift */,
+				71887C82201EAF4000C65F3E /* SyntaxSugar.swift */,
 			);
 			path = Closurized;
 			sourceTree = "<group>";
@@ -141,9 +144,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				717B6FBE201EAA88005E7D93 /* UIButton+Closurized.swift in Sources */,
-				71887C83201EAF4000C65F3E /* Setup.swift in Sources */,
+				717B6FBE201EAA88005E7D93 /* UIControl+Closurized.swift in Sources */,
+				71887C83201EAF4000C65F3E /* SyntaxSugar.swift in Sources */,
 				71887C87201EB5B200C65F3E /* Closurized.swift in Sources */,
+				7119BF4A201ED02600AB5D65 /* UIGestureRecognizer+Closurized.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
