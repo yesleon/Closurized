@@ -8,12 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		717B6FB7201EAA76005E7D93 /* Closurized.h in Headers */ = {isa = PBXBuildFile; fileRef = 717B6FB5201EAA76005E7D93 /* Closurized.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		717B6FBE201EAA88005E7D93 /* UIButton+Closurized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B6FBD201EAA88005E7D93 /* UIButton+Closurized.swift */; };
+		71887C83201EAF4000C65F3E /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71887C82201EAF4000C65F3E /* Setup.swift */; };
+		71887C87201EB5B200C65F3E /* Closurized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71887C86201EB5B200C65F3E /* Closurized.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		717B6FB2201EAA76005E7D93 /* Closurized.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Closurized.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		717B6FB5201EAA76005E7D93 /* Closurized.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Closurized.h; sourceTree = "<group>"; };
 		717B6FB6201EAA76005E7D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		717B6FBD201EAA88005E7D93 /* UIButton+Closurized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Closurized.swift"; sourceTree = "<group>"; };
+		71887C82201EAF4000C65F3E /* Setup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Setup.swift; sourceTree = "<group>"; };
+		71887C86201EB5B200C65F3E /* Closurized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Closurized.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -48,6 +54,9 @@
 			children = (
 				717B6FB5201EAA76005E7D93 /* Closurized.h */,
 				717B6FB6201EAA76005E7D93 /* Info.plist */,
+				717B6FBD201EAA88005E7D93 /* UIButton+Closurized.swift */,
+				71887C86201EB5B200C65F3E /* Closurized.swift */,
+				71887C82201EAF4000C65F3E /* Setup.swift */,
 			);
 			path = Closurized;
 			sourceTree = "<group>";
@@ -95,6 +104,7 @@
 				TargetAttributes = {
 					717B6FB1201EAA76005E7D93 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 0920;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -131,6 +141,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				717B6FBE201EAA88005E7D93 /* UIButton+Closurized.swift in Sources */,
+				71887C83201EAF4000C65F3E /* Setup.swift in Sources */,
+				71887C87201EB5B200C65F3E /* Closurized.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -253,6 +266,7 @@
 		717B6FBB201EAA76005E7D93 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
@@ -266,6 +280,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.narrativesaw.Closurized;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -274,6 +289,7 @@
 		717B6FBC201EAA76005E7D93 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEFINES_MODULE = YES;
