@@ -8,7 +8,9 @@
 
 import Foundation
 
-public func setup<T>(_ object: T, handler: (T) -> Void) {
+@discardableResult
+public func configure<T>(_ object: T, handler: (T) -> Void) -> T {
     handler(object)
+    return object
 }
 

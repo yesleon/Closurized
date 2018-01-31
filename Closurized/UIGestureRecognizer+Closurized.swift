@@ -35,11 +35,22 @@ extension UIGestureRecognizer: Closurized {
     }
     
 }
+//
+//extension UIView {
+//    public func addClosurizedGestureRecognizer<T: UIGestureRecognizer>(_ GestureRecognizer: T.Type) {
+//        addGestureRecognizer(configure(GestureRecognizer.init()) { gesture in
+//            gesture.setHandler() {
+//                print(gesture.state)
+//            }
+//        })
+//    }
+//}
+//
+//extension UIPanGestureRecognizer {
+//
+//    public convenience init(handler: Handler?) {
+//        self.init()
+//        setHandler(handler)
+//    }
+//}
 
-extension UIPanGestureRecognizer {
-    
-    public convenience init(handler: Handler?) {
-        self.init()
-        setHandler(handler)
-    }
-}
