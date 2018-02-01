@@ -13,4 +13,3 @@ public func configure<T>(_ object: T, handler: (T) -> Void) -> T {
     handler(object)
     return object
 }
-

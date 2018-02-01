@@ -10,6 +10,10 @@ import Foundation
 
 extension UIGestureRecognizer: Closurized {
     
+    func setClosurizedDelegate() -> ClosurizedDelegate {
+        return ClosurizedDelegate()
+    }
+    
     public typealias Handler = () -> Void
     
     class ClosurizedDelegate {
@@ -20,11 +24,6 @@ extension UIGestureRecognizer: Closurized {
     }
     
     public func setHandler(_ handler: Handler?) {
-        guard let closurizedDelegate = closurizedDelegate else {
-            self.closurizedDelegate = ClosurizedDelegate()
-            setHandler(handler)
-            return
-        }
         if let handler = handler {
             closurizedDelegate.handler = handler
             addTarget(closurizedDelegate, action: #selector(ClosurizedDelegate.didRecognizeGesture))
@@ -35,22 +34,4 @@ extension UIGestureRecognizer: Closurized {
     }
     
 }
-//
-//extension UIView {
-//    public func addClosurizedGestureRecognizer<T: UIGestureRecognizer>(_ GestureRecognizer: T.Type) {
-//        addGestureRecognizer(configure(GestureRecognizer.init()) { gesture in
-//            gesture.setHandler() {
-//                print(gesture.state)
-//            }
-//        })
-//    }
-//}
-//
-//extension UIPanGestureRecognizer {
-//
-//    public convenience init(handler: Handler?) {
-//        self.init()
-//        setHandler(handler)
-//    }
-//}
 

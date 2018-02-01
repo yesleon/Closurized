@@ -13,13 +13,19 @@ private var associatedObjectKey: UInt8 = 0
 protocol Closurized: AnyObject {
     
     associatedtype ClosurizedDelegate
+    
+    func setClosurizedDelegate() -> ClosurizedDelegate
 }
 
 extension Closurized {
     
-    var closurizedDelegate: ClosurizedDelegate? {
+    public var closurizedDelegate: ClosurizedDelegate {
         get {
-            return objc_getAssociatedObject(self, &associatedObjectKey) as? ClosurizedDelegate
+            if let delegate = objc_getAssociatedObject(self, &associatedObjectKey) as? ClosurizedDelegate {
+                return delegate
+            } else {
+                return setClosurizedDelegate()
+            }
         }
         set {
             objc_setAssociatedObject(self, &associatedObjectKey, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)

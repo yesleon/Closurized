@@ -17,6 +17,10 @@ extension UIControlEvents: Hashable {
 }
 
 extension UIControl: Closurized {
+    func setClosurizedDelegate() -> ClosurizedDelegate {
+        return ClosurizedDelegate()
+    }
+    
     
     public typealias Handler = () -> Void
     
@@ -45,11 +49,6 @@ extension UIControl: Closurized {
     }
     
     public func setControlEvents(_ controlEvents: UIControlEvents, handler: Handler?) {
-        guard let closurizedDelegate = closurizedDelegate else {
-            self.closurizedDelegate = ClosurizedDelegate()
-            setControlEvents(controlEvents, handler: handler)
-            return
-        }
         guard let action = ClosurizedDelegate.selector(for: controlEvents) else { return }
         if let handler = handler {
             closurizedDelegate.handlers[controlEvents] = handler
