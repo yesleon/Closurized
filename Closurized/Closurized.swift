@@ -24,7 +24,9 @@ extension Closurized {
             if let delegate = objc_getAssociatedObject(self, &associatedObjectKey) as? ClosurizedDelegate {
                 return delegate
             } else {
-                return setClosurizedDelegate()
+                let delegate = setClosurizedDelegate()
+                objc_setAssociatedObject(self, &associatedObjectKey, delegate, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                return delegate
             }
         }
         set {
