@@ -17,46 +17,49 @@ extension UIControlEvents: Hashable {
 }
 
 extension UIControl: Closurized {
-    func makeClosurizedDelegate() -> ClosurizedDelegate {
-        return ClosurizedDelegate()
-    }
     
+    func makeClosureWrapper() -> ClosureWrapper {
+        return ClosureWrapper()
+    }
     
     public typealias Handler = () -> Void
     
-    class ClosurizedDelegate {
-        
-        fileprivate var handlers: [UIControlEvents : Handler] = [:]
-        
-        @objc private func didTouchUpInside() {
-            handlers[.touchUpInside]?()
-        }
-        
-        @objc private func didTouchDown() {
-            handlers[.touchDown]?()
-        }
-        
-        fileprivate static func selector(for controlEvents: UIControlEvents) -> Selector? {
-            switch controlEvents {
-            case .touchUpInside:
-                return #selector(didTouchUpInside)
-            case .touchDown:
-                return #selector(didTouchDown)
-            default:
-                return nil
-            }
+    struct ClosureWrapper {
+        var handlers: [UIControlEvents : Handler] = [:]
+    }
+    
+    @objc func didTouchUpInside() {
+        closureWrapper.handlers[.touchUpInside]?()
+    }
+    
+    @objc func didTouchDown() {
+        closureWrapper.handlers[.touchDown]?()
+    }
+    
+    func selector(for controlEvents: UIControlEvents) -> Selector? {
+        switch controlEvents {
+        case .touchUpInside:
+            return #selector(didTouchUpInside)
+        case .touchDown:
+            return #selector(didTouchDown)
+        default:
+            return nil
         }
     }
     
-    public func setControlEvents(_ controlEvents: UIControlEvents, handler: Handler?) {
-        guard let action = ClosurizedDelegate.selector(for: controlEvents) else { return }
+    public func setHandler(for controlEvents: UIControlEvents, handler: Handler?) {
+        guard let action = selector(for: controlEvents) else { return }
         if let handler = handler {
-            closurizedDelegate.handlers[controlEvents] = handler
-            addTarget(closurizedDelegate, action: action, for: controlEvents)
+            closureWrapper.handlers[controlEvents] = handler
+            addTarget(closureWrapper, action: action, for: controlEvents)
         } else {
-            closurizedDelegate.handlers[controlEvents] = nil
-            removeTarget(closurizedDelegate, action: action, for: controlEvents)
+            closureWrapper.handlers[controlEvents] = nil
+            removeTarget(closureWrapper, action: action, for: controlEvents)
         }
+    }
+    
+    public func handler(for controlEvents: UIControlEvents) -> Handler? {
+        return closureWrapper.handlers[controlEvents]
     }
     
 }

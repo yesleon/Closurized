@@ -10,26 +10,32 @@ import Foundation
 
 extension UIGestureRecognizer: Closurized {
     
-    func makeClosurizedDelegate() -> ClosurizedDelegate {
-        return ClosurizedDelegate()
+    func makeClosureWrapper() -> ClosureWrapper {
+        return ClosureWrapper()
     }
     
     public typealias Handler = () -> Void
     
-    class ClosurizedDelegate {
+    struct ClosureWrapper {
         var handler: Handler?
-        @objc func didRecognizeGesture() {
-            handler?()
-        }
     }
     
-    public func setHandler(_ handler: Handler?) {
-        if let handler = handler {
-            closurizedDelegate.handler = handler
-            addTarget(closurizedDelegate, action: #selector(ClosurizedDelegate.didRecognizeGesture))
-        } else {
-            closurizedDelegate.handler = nil
-            removeTarget(closurizedDelegate, action: #selector(ClosurizedDelegate.didRecognizeGesture))
+    @objc func didRecognizeGesture() {
+        closureWrapper.handler?()
+    }
+    
+    public var handler: Handler? {
+        get {
+            return closureWrapper.handler
+        }
+        set {
+            if let handler = newValue {
+                closureWrapper.handler = handler
+                addTarget(self, action: #selector(didRecognizeGesture))
+            } else {
+                closureWrapper.handler = nil
+                removeTarget(self, action: #selector(didRecognizeGesture))
+            }
         }
     }
     
