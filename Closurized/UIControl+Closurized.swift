@@ -17,7 +17,7 @@ extension UIControlEvents: Hashable {
 }
 
 extension UIControl: Closurized {
-    func setClosurizedDelegate() -> ClosurizedDelegate {
+    func makeClosurizedDelegate() -> ClosurizedDelegate {
         return ClosurizedDelegate()
     }
     

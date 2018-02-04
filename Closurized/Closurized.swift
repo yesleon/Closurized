@@ -14,19 +14,19 @@ protocol Closurized: AnyObject {
     
     associatedtype ClosurizedDelegate
     
-    func setClosurizedDelegate() -> ClosurizedDelegate
+    func makeClosurizedDelegate() -> ClosurizedDelegate
 }
 
 extension Closurized {
     
-    public var closurizedDelegate: ClosurizedDelegate {
+    var closurizedDelegate: ClosurizedDelegate {
         get {
             if let delegate = objc_getAssociatedObject(self, &associatedObjectKey) as? ClosurizedDelegate {
                 return delegate
             } else {
-                let delegate = setClosurizedDelegate()
-                objc_setAssociatedObject(self, &associatedObjectKey, delegate, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-                return delegate
+                return configure(makeClosurizedDelegate()) {
+                    objc_setAssociatedObject(self, &associatedObjectKey, $0, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+                }
             }
         }
         set {

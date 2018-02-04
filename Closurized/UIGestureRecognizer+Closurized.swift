@@ -10,7 +10,7 @@ import Foundation
 
 extension UIGestureRecognizer: Closurized {
     
-    func setClosurizedDelegate() -> ClosurizedDelegate {
+    func makeClosurizedDelegate() -> ClosurizedDelegate {
         return ClosurizedDelegate()
     }
     
