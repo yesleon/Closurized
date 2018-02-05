@@ -10,9 +10,10 @@ import Foundation
 
 extension UITableView: Closurized {
     
-    class ClosureWrapper: NSObject, UITableViewDataSource {
+    class ClosureWrapper: NSObject, UITableViewDataSource, UITableViewDelegate {
         var numberOfRowsInSection: ((Int) -> Int)!
         var cellForRowAt: ((IndexPath) -> UITableViewCell)!
+        var didSelectRowAt: ((IndexPath) -> Void)?
         
         func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
             return numberOfRowsInSection(section)
@@ -20,6 +21,10 @@ extension UITableView: Closurized {
         
         func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
             return cellForRowAt(indexPath)
+        }
+        
+        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+            didSelectRowAt?(indexPath)
         }
         
     }
@@ -31,32 +36,23 @@ extension UITableView: Closurized {
     public enum HandlerEnum {
         case numberOfRowsInSection((Int) -> Int)
         case cellForRowAt((IndexPath) -> UITableViewCell)
+        case didSelectRowAt(((IndexPath) -> Void)?)
     }
     
     public func setHandler(_ handler: HandlerEnum) {
+        if delegate !== closureWrapper {
+            delegate = closureWrapper
+        }
+        if dataSource !== closureWrapper {
+            dataSource = closureWrapper
+        }
         switch handler {
         case .numberOfRowsInSection(let handler):
             closureWrapper.numberOfRowsInSection = handler
         case .cellForRowAt(let handler):
             closureWrapper.cellForRowAt = handler
-        }
-    }
-    
-    public var numberOfRowsInSection: (Int) -> Int {
-        get {
-            return closureWrapper.numberOfRowsInSection
-        }
-        set {
-            closureWrapper.numberOfRowsInSection = newValue
-        }
-    }
-
-    public var cellForRowAt: (IndexPath) -> UITableViewCell {
-        get {
-            return closureWrapper.cellForRowAt
-        }
-        set {
-            closureWrapper.cellForRowAt = newValue
+        case .didSelectRowAt(let handler):
+            closureWrapper.didSelectRowAt = handler
         }
     }
     

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		7119BF4A201ED02600AB5D65 /* UIGestureRecognizer+Closurized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7119BF49201ED02600AB5D65 /* UIGestureRecognizer+Closurized.swift */; };
 		71700B5E20277A0400117509 /* UITableView+Closurized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71700B5D20277A0400117509 /* UITableView+Closurized.swift */; };
+		71700B602027C8A600117509 /* UIPresentationController+Closurized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71700B5F2027C8A600117509 /* UIPresentationController+Closurized.swift */; };
 		717B6FB7201EAA76005E7D93 /* Closurized.h in Headers */ = {isa = PBXBuildFile; fileRef = 717B6FB5201EAA76005E7D93 /* Closurized.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		717B6FBE201EAA88005E7D93 /* UIControl+Closurized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 717B6FBD201EAA88005E7D93 /* UIControl+Closurized.swift */; };
 		71887C83201EAF4000C65F3E /* SyntaxSugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 71887C82201EAF4000C65F3E /* SyntaxSugar.swift */; };
@@ -18,6 +19,7 @@
 /* Begin PBXFileReference section */
 		7119BF49201ED02600AB5D65 /* UIGestureRecognizer+Closurized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Closurized.swift"; sourceTree = "<group>"; };
 		71700B5D20277A0400117509 /* UITableView+Closurized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+Closurized.swift"; sourceTree = "<group>"; };
+		71700B5F2027C8A600117509 /* UIPresentationController+Closurized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIPresentationController+Closurized.swift"; sourceTree = "<group>"; };
 		717B6FB2201EAA76005E7D93 /* Closurized.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Closurized.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		717B6FB5201EAA76005E7D93 /* Closurized.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Closurized.h; sourceTree = "<group>"; };
 		717B6FB6201EAA76005E7D93 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				717B6FBD201EAA88005E7D93 /* UIControl+Closurized.swift */,
 				7119BF49201ED02600AB5D65 /* UIGestureRecognizer+Closurized.swift */,
 				71700B5D20277A0400117509 /* UITableView+Closurized.swift */,
+				71700B5F2027C8A600117509 /* UIPresentationController+Closurized.swift */,
 			);
 			path = Closurized;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				71700B5E20277A0400117509 /* UITableView+Closurized.swift in Sources */,
+				71700B602027C8A600117509 /* UIPresentationController+Closurized.swift in Sources */,
 				717B6FBE201EAA88005E7D93 /* UIControl+Closurized.swift in Sources */,
 				71887C83201EAF4000C65F3E /* SyntaxSugar.swift in Sources */,
 				71887C87201EB5B200C65F3E /* Closurized.swift in Sources */,
