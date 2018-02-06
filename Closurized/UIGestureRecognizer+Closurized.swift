@@ -10,13 +10,9 @@ import Foundation
 
 extension UIGestureRecognizer: Closurized {
     
-    func makeClosureWrapper() -> ClosureWrapper {
-        return ClosureWrapper()
-    }
-    
     public typealias Handler = () -> Void
     
-    struct ClosureWrapper {
+    struct ClosureWrapper: ClosureWrapperProtocol {
         var handler: Handler?
     }
     

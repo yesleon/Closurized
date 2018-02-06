@@ -10,11 +10,15 @@ import Foundation
 
 private var associatedObjectKey: UInt8 = 0
 
+protocol ClosureWrapperProtocol {
+    init()
+}
+
 protocol Closurized: AnyObject {
     
-    associatedtype ClosureWrapper
+    associatedtype ClosureWrapper: ClosureWrapperProtocol
     
-    func makeClosureWrapper() -> ClosureWrapper
+//    func makeClosureWrapper() -> ClosureWrapper
 }
 
 extension Closurized {
@@ -24,7 +28,7 @@ extension Closurized {
             if let delegate = objc_getAssociatedObject(self, &associatedObjectKey) as? ClosureWrapper {
                 return delegate
             } else {
-                return configure(makeClosureWrapper()) {
+                return configure(ClosureWrapper()) {
                     objc_setAssociatedObject(self, &associatedObjectKey, $0, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
                 }
             }

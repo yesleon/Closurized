@@ -10,15 +10,12 @@ import Foundation
 
 extension UIPopoverPresentationController: Closurized {
     
-    class ClosureWrapper: NSObject, UIPopoverPresentationControllerDelegate {
+    class ClosureWrapper: NSObject, ClosureWrapperProtocol, UIPopoverPresentationControllerDelegate {
         var adaptivePresentationStyle: (() -> UIModalPresentationStyle)?
         func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
             return adaptivePresentationStyle?() ?? controller.adaptivePresentationStyle
         }
-    }
-    
-    func makeClosureWrapper() -> ClosureWrapper {
-        return ClosureWrapper()
+        required override init() { }
     }
     
     public enum HandlerEnum {

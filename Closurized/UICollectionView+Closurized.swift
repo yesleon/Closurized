@@ -8,52 +8,50 @@
 
 import Foundation
 
-extension UICollectionView: Closurized {
-    
-    class ClosureWrapper: NSObject, UITableViewDataSource, UITableViewDelegate {
-        var numberOfRowsInSection: ((Int) -> Int)!
-        var cellForRowAt: ((IndexPath) -> UITableViewCell)!
-        var didSelectRowAt: ((IndexPath) -> Void)?
-        
-        func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-            return numberOfRowsInSection(section)
-        }
-        
-        func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-            return cellForRowAt(indexPath)
-        }
-        
-        func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-            didSelectRowAt?(indexPath)
-        }
-        
+extension UICollectionView: Closurized, UICollectionViewDataSource, UICollectionViewDelegate {
+    public struct DataSourceWrapper {
+        var numberOfItemsInSection: ((Int) -> Int)!
+        var cellForItemAt: ((IndexPath) -> UICollectionViewCell)!
     }
     
-    func makeClosureWrapper() -> ClosureWrapper {
-        return ClosureWrapper()
+    public struct DelegateWrapper {
+        var didSelectItemAt: ((IndexPath) -> Void)?
     }
     
-    public enum HandlerEnum {
-        case numberOfRowsInSection((Int) -> Int)
-        case cellForRowAt((IndexPath) -> UITableViewCell)
-        case didSelectRowAt(((IndexPath) -> Void)?)
+    struct ClosureWrapper: ClosureWrapperProtocol {
+        var dataSourceWrapper: DataSourceWrapper?
+        var delegateWrapper: DelegateWrapper?
     }
     
-//    public func setHandler(_ handler: HandlerEnum) {
-//        if delegate !== closureWrapper {
-//            delegate = closureWrapper
-//        }
-//        if dataSource !== closureWrapper {
-//            dataSource = closureWrapper
-//        }
-//        switch handler {
-//        case .numberOfRowsInSection(let handler):
-//            closureWrapper.numberOfRowsInSection = handler
-//        case .cellForRowAt(let handler):
-//            closureWrapper.cellForRowAt = handler
-//        case .didSelectRowAt(let handler):
-//            closureWrapper.didSelectRowAt = handler
-//        }
-//    }
+    
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return closureWrapper.dataSourceWrapper!.numberOfItemsInSection(section)
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        return closureWrapper.dataSourceWrapper!.cellForItemAt(indexPath)
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        closureWrapper.delegateWrapper!.didSelectItemAt?(indexPath)
+    }
+    
+    public func setDelegateWrapper(_ delegateWrapper: DelegateWrapper?) {
+        closureWrapper.delegateWrapper = delegateWrapper
+        if delegateWrapper != nil {
+            delegate = self
+        } else {
+            delegate = nil
+        }
+    }
+    
+    public func setDataSourceWrapper(_ dataSourceWrapper: DataSourceWrapper?) {
+        closureWrapper.dataSourceWrapper = dataSourceWrapper
+        if dataSourceWrapper != nil {
+            dataSource = self
+        } else {
+            dataSource = nil
+        }
+    }
     
 }

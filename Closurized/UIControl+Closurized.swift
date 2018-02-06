@@ -18,13 +18,9 @@ extension UIControlEvents: Hashable {
 
 extension UIControl: Closurized {
     
-    func makeClosureWrapper() -> ClosureWrapper {
-        return ClosureWrapper()
-    }
-    
     public typealias Handler = () -> Void
     
-    struct ClosureWrapper {
+    struct ClosureWrapper: ClosureWrapperProtocol {
         var handlers: [UIControlEvents : Handler] = [:]
     }
     
